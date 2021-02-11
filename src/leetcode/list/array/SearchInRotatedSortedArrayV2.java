@@ -5,12 +5,12 @@ package leetcode.list.array;
  * 例如， [0,1,2,4,5,6,7] 经旋转后可能变为 [4,5,6,7,0,1,2]
  * 在数组中搜索 target，返回它的索引
  */
-public class SearchInRotatedSortedArray {
+public class SearchInRotatedSortedArrayV2 {
 
-    public int search(int[] nums, int target) {
+    public boolean search(int[] nums, int target) {
 
         if (nums == null || nums.length == 0) {
-            return -1;
+            return false;
         }
 
         int left = 0;
@@ -19,7 +19,7 @@ public class SearchInRotatedSortedArray {
         while (left <= right) {
             int mid = left + (right - left) / 2;
             if (nums[mid] == target) {
-                return mid;
+                return true;
             }
 
             // 右段
@@ -40,17 +40,18 @@ public class SearchInRotatedSortedArray {
                 }
             }
 
+
             if (nums[mid] == nums[left]) {
                 left++;
             }
-            
+
         }
 
-        return -1;
+        return false;
     }
 
     public static void main(String[] args) {
-        System.out.println(new SearchInRotatedSortedArray().search(new int[]{3, 1}, 1));
+        System.out.println(new SearchInRotatedSortedArrayV2().search(new int[]{2, 5, 6, 0, 0, 1, 2}, 0));
     }
 
 }
