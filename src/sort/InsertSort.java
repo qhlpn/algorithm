@@ -1,5 +1,8 @@
 package sort;
 
+/**
+ * @author QiuHongLong
+ */
 public class InsertSort {
 
     public void sort(int[] arr) {

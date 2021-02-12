@@ -1,5 +1,8 @@
 package sort;
 
+/**
+ * @author QiuHongLong
+ */
 public class SelectSort {
 
     public void sort(int[] arr) {

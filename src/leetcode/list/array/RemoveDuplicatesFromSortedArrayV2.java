@@ -2,6 +2,7 @@ package leetcode.list.array;
 
 /**
  * 给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素最多出现两次，返回移除后数组的新长度
+ * @author QiuHongLong
  */
 public class RemoveDuplicatesFromSortedArrayV2 {
 

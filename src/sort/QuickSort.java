@@ -1,5 +1,9 @@
 package sort;
 
+/**
+ * partition + preorder
+ * @author QiuHongLong
+ */
 public class QuickSort {
 
 
@@ -8,6 +12,7 @@ public class QuickSort {
         if (arr == null || arr.length == 0) {
             return;
         }
+
         quickSort(arr, 0, arr.length - 1);
         System.out.println();
 
@@ -41,6 +46,7 @@ public class QuickSort {
                 // need swap
                 swap(arr, less++, l++);
             } else if (arr[l] > target) {
+                // unstable
                 swap(arr, more--, l);
             }
         }
@@ -56,7 +62,7 @@ public class QuickSort {
     }
 
     public static void main(String[] args) {
-        new QuickSort().sort(new int[]{1, 1, 5, 2, 4, 6});
+        new QuickSort().sort(new int[]{1, 8, 5, 2, 4, 6});
     }
 
 }
