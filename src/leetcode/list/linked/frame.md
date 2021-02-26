@@ -15,3 +15,4 @@ for (int i = left; i <= right; i++) {
 }
 ```
 
+### 边车模式
