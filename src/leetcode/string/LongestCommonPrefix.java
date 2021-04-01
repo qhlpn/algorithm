@@ -38,6 +38,8 @@ public class LongestCommonPrefix {
 
     public static void main(String[] args) {
         System.out.println(new LongestCommonPrefix().longestCommonPrefix(new String[]{"aa", "aa"}));
+
+        Thread t = new Thread(()-> System.out.println("~~~~~~~~~~~~"));
     }
 
 }
