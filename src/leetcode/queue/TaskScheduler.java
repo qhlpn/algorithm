@@ -1,4 +1,4 @@
-package leetcode.Queue;
+package leetcode.queue;
 
 import java.util.Arrays;
 
