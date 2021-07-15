@@ -46,5 +46,3 @@ int left_bound(int[] nums, int target) {
 	return left;
 }
 ```
-
-#### 
