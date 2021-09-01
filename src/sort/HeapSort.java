@@ -2,6 +2,9 @@ package sort;
 
 /**
  * 上冒初始化堆 + 交换 + 下沉恢复堆
+ * <p>
+ * PriorityQueue
+ *
  * @author QiuHongLong
  */
 public class HeapSort {
