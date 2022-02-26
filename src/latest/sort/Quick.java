@@ -1,7 +1,7 @@
 package latest.sort;
 
 /**
- * partition + preorder
+ * 三色域 partition + 前序遍历
  */
 public class Quick {
 
@@ -41,7 +41,7 @@ public class Quick {
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[]{8,7,6,5,4,6,7,8};
+        int[] arr = new int[]{8, 7, 6, 5, 4, 6, 7, 8};
         new Quick().sort(arr);
         System.out.println();
     }
