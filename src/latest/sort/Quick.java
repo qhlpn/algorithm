@@ -1,13 +1,11 @@
 package latest.sort;
 
-/**
- * 三色域 partition + 前序遍历
- */
 public class Quick {
 
     public void sort(int[] arr) {
         doSort(arr, 0, arr.length - 1);
     }
+
 
     private void doSort(int[] arr, int left, int right) {
         if (left >= right) return;
@@ -17,31 +15,34 @@ public class Quick {
     }
 
     private int[] partition(int[] arr, int left, int right) {
-        int lastElem = arr[right];
-        int under = left - 1;
-        int high = right - 1;
-        while (left <= high) {
-            if (arr[left] < lastElem) {
-                swap(arr, ++under, left++);
-            } else if (arr[left] == lastElem) {
-                left++;
+        int target = arr[right];
+
+        // lIdx | target | rIdx
+        int lIdx = left - 1;
+        int rIdx = right;
+        int fIdx = left;
+
+        while (fIdx < rIdx) {
+            if (arr[fIdx] > target) {
+                swap(arr, fIdx, --rIdx);
+            } else if (arr[fIdx] < target) {
+                swap(arr, ++lIdx, fIdx++);
             } else {
-                swap(arr, left, high--);
+                fIdx++;
             }
         }
-        swap(arr, ++high, right);
-        return new int[]{under, high + 1};
-
+        swap(arr, rIdx++, right);
+        return new int[]{lIdx, rIdx};
     }
 
-    private void swap(int[] arr, int left, int right) {
-        int temp = arr[left];
-        arr[left] = arr[right];
-        arr[right] = temp;
+    private void swap(int[] arr, int a, int b) {
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[]{8, 7, 6, 5, 4, 6, 7, 8};
+        int[] arr = new int[]{2, 1, 1, 1, 1, 1, 1, 1};
         new Quick().sort(arr);
         System.out.println();
     }

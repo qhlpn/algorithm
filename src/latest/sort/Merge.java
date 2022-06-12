@@ -1,60 +1,46 @@
 package latest.sort;
 
-/**
- * 后序遍历 + 合并
- */
 public class Merge {
 
-    private void sort(int[] arr) {
-
+    public void sort(int[] arr) {
         doSort(arr, 0, arr.length - 1);
     }
 
-    private void doSort(int[] arr, int l, int r) {
-
-        if (l >= r) return;
-        int m = l + (r - l) / 2;
-        doSort(arr, l, m);
-        doSort(arr, m + 1, r);
-        merge(arr, l, r);
-
+    private void doSort(int[] arr, int left, int right) {
+        if (left >= right) return;
+        int mid = left + (right - left) / 2;
+        doSort(arr, left, mid);
+        doSort(arr, mid + 1, right);
+        merge(arr, left, right);
     }
 
-    private void merge(int[] arr, int l, int r) {
-        if (l >= r) return;
-        int[] temp = new int[r - l + 1];
-        int i = 0;
-        int lr = l + (r - l) / 2;
-        int rl = lr + 1;
-        while (l <= lr && rl <= r) {
-            if (arr[l] < arr[rl]) {
-                temp[i++] = arr[l++];
-            } else if (arr[l] > arr[rl]) {
-                temp[i++] = arr[rl++];
+    private void merge(int[] arr, int left, int right) {
+        if (left >= right) return;
+        int mid = left + (right - left) / 2;
+        int lfIdx = left;
+        int rfIdx = mid + 1;
+        int[] tmp = new int[right - left + 1];
+        int tIdx = 0;
+        while (lfIdx <= mid && rfIdx <= right) {
+            if (arr[lfIdx] <= arr[rfIdx]) {
+                tmp[tIdx++] = arr[lfIdx++];
             } else {
-                temp[i++] = arr[l++];
-                temp[i++] = arr[rl++];
+                tmp[tIdx++] = arr[rfIdx++];
             }
         }
-        if (l <= lr) {
-            while (l <= lr) {
-                temp[i++] = arr[l++];
-            }
+        while (lfIdx <= mid) {
+            tmp[tIdx++] = arr[lfIdx++];
         }
-        if (rl <= r) {
-            while (rl <= r) {
-                temp[i++] = arr[rl++];
-            }
+        while (rfIdx <= right) {
+            tmp[tIdx++] = arr[rfIdx++];
         }
-        for (int i1 = temp.length - 1; i1 >= 0; i1--) {
-            arr[r--] = temp[i1];
-        }
+        System.arraycopy(tmp, 0, arr, left, right - left + 1);
     }
+
 
     public static void main(String[] args) {
-        int[] arr = new int[]{8, 7, 6, 5, 4, 6, 7, 8};
+        int[] arr = new int[]{2, 2, 3, 4, 1, 1, 1, 1};
         new Merge().sort(arr);
         System.out.println();
     }
-
 }
